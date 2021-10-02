@@ -1,0 +1,141 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Algebra II</title>
+    <style>
+      #mostofpage {
+        margin: auto;
+        width: 80%;
+        padding: 10px;
+        background-color: #53da32;
+      }
+      #hints, #problem, #response {
+        font-family: Verdana;
+        padding: 10px;
+      }
+      body {
+        background-color: #e6e2d3;
+      }
+      #tfspan {
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+      #imagespan {
+        text-align: center;
+        padding-bottom: 20px;
+      }
+      #hintlist li {
+        margin: 0 0 3px 0;
+      }
+    </style>
+    <script>
+
+      var variableNames = ["x", "y", "z", "w", "v", "j", "k"]
+      var coefficientChoices = [-5, -4, -3, -2, -1, -1, -1, 0, 0, 1, 1, 1, 2, 3, 4, 5]
+      var variableValues = [0, 0, 0, 0, 0, 0, 0]
+      var numVars = 0
+      
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      
+      function getRandomFloat(min, max) {
+        return (Math.random() * (max - min)) + min;
+      }
+      
+      function getRandomElement(inArray) {
+        return inArray[Math.floor(Math.random() * inArray.length)];
+      }
+      
+      function generateProblem() {
+        // choose how many variables
+        numVars = getRandomInt(2, 3)
+        // choose values
+        for (var cVar = 0; cVar < numVars; cVar++) {
+          variableValues[cVar] = getRandomInt(-10, 10)
+        }
+        // choose equations, coefficients
+        var equations = []
+        for (var cEq = 0; cEq < numVars; cEq++) {
+          curEqText = ""
+          equationAnswer = 0
+          for (var cVar = 0; cVar < numVars; cVar++) {
+            curcoeff = getRandomElement(coefficientChoices)
+            equationAnswer += variableValues[cVar] * curcoeff
+            if (Math.abs(curcoeff) == 1) {
+              if (curcoeff < 0) {
+                if (cVar == 0) {
+                  curEqText += '-' + variableNames[cVar]
+                }
+                else {
+                  curEqText += ' - ' + variableNames[cVar]
+                }
+              }
+              else {
+                if (cVar == 0) {
+                  curEqText += variableNames[cVar]
+                }
+                else {
+                  curEqText += ' + ' + variableNames[cVar]
+                }
+              }
+            }
+            else if (curcoeff != 0) {
+              if (cVar == 0) {
+                curEqText += curcoeff.toString() + variableNames[cVar]
+              }
+              else if (curcoeff < 0) {
+                curEqText += ' - ' + Math.abs(curcoeff).toString() + variableNames[cVar]
+              }
+              else {
+                curEqText += ' + ' + curcoeff.toString() + variableNames[cVar]
+              }
+            }
+          }
+          curEqText += ' = ' + equationAnswer.toString()
+          equations.push(curEqText)
+        }
+        // assemble answer boxes
+        var probText = "<span id='tfspan'>"
+        for (var cVar = 0; cVar < numVars; cVar++) {
+          probText += equations[cVar] + '<br>'
+        }
+        probText += "</span><br>"
+        answerBoxes = "<div>"
+        for (var cVar = 0; cVar < numVars; cVar++) {
+          answerBoxes += variableNames[cVar] + ": <input type='text' id='var" + cVar.toString() + "'/><br>"
+        }
+        answerBoxes += "<button type='button' onclick='verifyAnswer()'>Check</button></div>"
+        // add answer button
+        document.getElementById("answerarea").innerHTML = answerBoxes;
+        document.getElementById("problem").innerHTML = probText;
+        document.getElementById("response").innerHTML = "";
+      }
+
+      function verifyAnswer() {
+        var allGood = true
+        for (var cVar = 0; cVar < numVars; cVar++) {
+          curAnswer = parseInt(document.getElementById("var" + cVar.toString()).value)
+          if (curAnswer != variableValues[cVar]) {
+            document.getElementById("response").innerHTML = "Not quite."
+            allGood = false
+          }
+        }
+        if (allGood) {
+          document.getElementById("response").innerHTML = "Good!"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="mostofpage">
+      <div id="problem">
+      </div>
+      <button type="button" onclick="generateProblem()">New Problem</button>
+      <div id="answerarea">
+      </div>
+      <div id="response">
+      </div>
+    </div>
+  </body>
+</html>
