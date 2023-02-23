@@ -710,6 +710,16 @@
         }
         
       }
+      
+      function clearDwarf() {
+        var radios = document.querySelectorAll('input[type="radio"]');
+        for (let cRadio = 0; cRadio < radios.length; cRadio++) {
+          radios[cRadio].checked = false;
+        }
+        var resultstable = document.getElementById("resultstable");
+        resultstable.innerHTML = "";
+      }
+      
     </script>
   </head>
   <body onload="initpage()">
@@ -736,6 +746,7 @@
     <br/>
     <br/>
     <input type="button" value="Test This Dwarf" onclick="scoreDwarf();"/>
+    <input type="button" value="Clear Test" onclick="clearDwarf();"/>
     <br/>
     <br/>
     <table id="resultstable">
