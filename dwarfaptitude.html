@@ -69,7 +69,7 @@
         white-space: nowrap;
       }
 
-      .poorradio {
+      .mediocreradio {
         display: block;
         float: left;
         font-size: 10.0pt;
@@ -129,8 +129,19 @@
         border-collapse: separate;
         border-spacing: 10px 5px;
       }
+      
       th, td {
         border: 0px solid black;
+      }
+      
+      a:link {
+        text-decoration: inherit;
+        color: inherit;
+      }
+
+      a:visited {
+        text-decoration: inherit;
+        color: inherit;
       }
     </style>
     <script>
@@ -152,17 +163,35 @@
                         "kinestheticsense": "Kinesthetic Sense",
                         "empathy": "Empathy"};
 
+      var attribute2wiki = {"strength": "https://dwarffortresswiki.org/index.php/Attribute#Strength",
+                            "agility": "https://dwarffortresswiki.org/index.php/Attribute#Agility",
+                            "toughness": "https://dwarffortresswiki.org/index.php/Attribute#Toughness",
+                            "endurance": "https://dwarffortresswiki.org/index.php/Attribute#Endurance",
+                            "intuition": "https://dwarffortresswiki.org/index.php/Attribute#Intuition",
+                            "socialawareness": "https://dwarffortresswiki.org/index.php/Attribute#Social_awareness",
+                            "analyticalability": "https://dwarffortresswiki.org/index.php/Attribute#Analytical_ability",
+                            "focus": "https://dwarffortresswiki.org/index.php/Attribute#Focus",
+                            "willpower": "https://dwarffortresswiki.org/index.php/Attribute#Willpower",
+                            "creativity": "https://dwarffortresswiki.org/index.php/Attribute#Creativity",
+                            "patience": "https://dwarffortresswiki.org/index.php/Attribute#Patience",
+                            "memory": "https://dwarffortresswiki.org/index.php/Attribute#Memory",
+                            "linguisticability": "https://dwarffortresswiki.org/index.php/Attribute#Linguistic_ability",
+                            "spatialsense": "https://dwarffortresswiki.org/index.php/Attribute#Spatial_sense",
+                            "musicality": "https://dwarffortresswiki.org/index.php/Attribute#Musicality",
+                            "kinestheticsense": "https://dwarffortresswiki.org/index.php/Attribute#Kinesthetic_sense",
+                            "empathy": "https://dwarffortresswiki.org/index.php/Attribute#Empathy"};
+                        
       var degrees =  {"astounding": "Astounding",
                       "great": "Great",
                       "good": "Good",
-                      "poor": "Poor",
+                      "mediocre": "Mediocre",
                       "bad": "Bad",
                       "awful": "Awful"};
 
       var degreepoints = {"astounding": 5,
                           "great": 3,
                           "good": 2,
-                          "poor": -2,
+                          "mediocre": -2,
                           "bad": -3,
                           "awful": -5};
 
@@ -302,6 +331,142 @@
                     "wrestler": "Wrestler",
                     "writer": "Writer"};
 
+      var skill2wiki = {"ambusher": "https://dwarffortresswiki.org/index.php/Ambusher",
+                        "animalcaretaker": "https://dwarffortresswiki.org/index.php/Animal_caretaker",
+                        "animaldissector": "https://dwarffortresswiki.org/index.php/Animal_dissector",
+                        "animaltrainer": "https://dwarffortresswiki.org/index.php/Animal_trainer",
+                        "appraiser": "https://dwarffortresswiki.org/index.php/Appraiser",
+                        "archer": "https://dwarffortresswiki.org/index.php/Archer",
+                        "armoruser": "https://dwarffortresswiki.org/index.php/Armor_user",
+                        "armorsmith": "https://dwarffortresswiki.org/index.php/Armorsmith",
+                        "astronomer": "https://dwarffortresswiki.org/index.php/Astronomer",
+                        "axeman": "https://dwarffortresswiki.org/index.php/Axeman",
+                        "balance": "https://dwarffortresswiki.org/index.php/Balance",
+                        "beekeeper": "https://dwarffortresswiki.org/index.php/Beekeeper",
+                        "biter": "https://dwarffortresswiki.org/index.php/Biter",
+                        "blowgunner": "https://dwarffortresswiki.org/index.php/Blowgunner",
+                        "bonecarver": "https://dwarffortresswiki.org/index.php/Bone_carver",
+                        "bonedoctor": "https://dwarffortresswiki.org/index.php/Bone_doctor",
+                        "bookbinder": "https://dwarffortresswiki.org/index.php/Bookbinder",
+                        "bowman": "https://dwarffortresswiki.org/index.php/Bowman",
+                        "bowyer": "https://dwarffortresswiki.org/index.php/Bowyer",
+                        "brewer": "https://dwarffortresswiki.org/index.php/Brewer",
+                        "butcher": "https://dwarffortresswiki.org/index.php/Butcher",
+                        "carpenter": "https://dwarffortresswiki.org/index.php/Carpenter",
+                        "cheesemaker": "https://dwarffortresswiki.org/index.php/Cheese_maker",
+                        "chemist": "https://dwarffortresswiki.org/index.php/Chemist",
+                        "climber": "https://dwarffortresswiki.org/index.php/Climber",
+                        "clothier": "https://dwarffortresswiki.org/index.php/Clothier",
+                        "comedian": "https://dwarffortresswiki.org/index.php/Comedian",
+                        "concentration": "https://dwarffortresswiki.org/index.php/Concentration",
+                        "consoler": "https://dwarffortresswiki.org/index.php/Consoler",
+                        "conversationalist": "https://dwarffortresswiki.org/index.php/Conversationalist",
+                        "cook": "https://dwarffortresswiki.org/index.php/Cook",
+                        "coordination": "https://dwarffortresswiki.org/index.php/Coordination",
+                        "criticalthinker": "https://dwarffortresswiki.org/index.php/Critical_thinker",
+                        "crossbowman": "https://dwarffortresswiki.org/index.php/Crossbowman",
+                        "crutchwalker": "https://dwarffortresswiki.org/index.php/Crutch-walker",
+                        "dancer": "https://dwarffortresswiki.org/index.php/Dancer",
+                        "diagnostician": "https://dwarffortresswiki.org/index.php/Diagnostician",
+                        "discipline": "https://dwarffortresswiki.org/index.php/Discipline",
+                        "dodger": "https://dwarffortresswiki.org/index.php/Dodger",
+                        "druid": "https://dwarffortresswiki.org/index.php/Druid",
+                        "dyer": "https://dwarffortresswiki.org/index.php/Dyer",
+                        "engraver": "https://dwarffortresswiki.org/index.php/Engraver",
+                        "fighter": "https://dwarffortresswiki.org/index.php/Fighter",
+                        "fishcleaner": "https://dwarffortresswiki.org/index.php/Fish_cleaner",
+                        "fishdissector": "https://dwarffortresswiki.org/index.php/Fish_dissector",
+                        "fisherdwarf": "https://dwarffortresswiki.org/index.php/Fisherdwarf",
+                        "flatterer": "https://dwarffortresswiki.org/index.php/Flatterer",
+                        "fluidengineer": "https://dwarffortresswiki.org/index.php/Fluid_engineer",
+                        "furnaceoperator": "https://dwarffortresswiki.org/index.php/Furnace_operator",
+                        "gelder": "https://dwarffortresswiki.org/index.php/Gelder",
+                        "gemcutter": "https://dwarffortresswiki.org/index.php/Gem_cutter",
+                        "gemsetter": "https://dwarffortresswiki.org/index.php/Gem_setter",
+                        "geographer": "https://dwarffortresswiki.org/index.php/Geographer",
+                        "glassmaker": "https://dwarffortresswiki.org/index.php/Glassmaker",
+                        "glazer": "https://dwarffortresswiki.org/index.php/Glazer",
+                        "hammerman": "https://dwarffortresswiki.org/index.php/Hammerman",
+                        "herbalist": "https://dwarffortresswiki.org/index.php/Herbalist",
+                        "intimidator": "https://dwarffortresswiki.org/index.php/Intimidator",
+                        "judgeofintent": "https://dwarffortresswiki.org/index.php/Judge_of_intent",
+                        "keyboardist": "https://dwarffortresswiki.org/index.php/Keyboardist",
+                        "kicker": "https://dwarffortresswiki.org/index.php/Kicker",
+                        "knapper": "https://dwarffortresswiki.org/index.php/Knapper",
+                        "knifeuser": "https://dwarffortresswiki.org/index.php/Knife_user",
+                        "lasher": "https://dwarffortresswiki.org/index.php/Lasher",
+                        "leader": "https://dwarffortresswiki.org/index.php/Leader",
+                        "leatherworker": "https://dwarffortresswiki.org/index.php/Leatherworker",
+                        "liar": "https://dwarffortresswiki.org/index.php/Liar",
+                        "logician": "https://dwarffortresswiki.org/index.php/Logician",
+                        "lyemaker": "https://dwarffortresswiki.org/index.php/Lye_maker",
+                        "maceman": "https://dwarffortresswiki.org/index.php/Maceman",
+                        "mason": "https://dwarffortresswiki.org/index.php/Mason",
+                        "mathematician": "https://dwarffortresswiki.org/index.php/Mathematician",
+                        "mechanic": "https://dwarffortresswiki.org/index.php/Mechanic",
+                        "metalcrafter": "https://dwarffortresswiki.org/index.php/Metal_crafter",
+                        "metalsmith": "https://dwarffortresswiki.org/index.php/Metalsmith",
+                        "milker": "https://dwarffortresswiki.org/index.php/Milker",
+                        "miller": "https://dwarffortresswiki.org/index.php/Miller",
+                        "miner": "https://dwarffortresswiki.org/index.php/Miner",
+                        "miscobjectuser": "https://dwarffortresswiki.org/index.php/Misc._object_user",
+                        "musician": "https://dwarffortresswiki.org/index.php/Musician",
+                        "negotiator": "https://dwarffortresswiki.org/index.php/Negotiator",
+                        "observer": "https://dwarffortresswiki.org/index.php/Observer",
+                        "opticsengineer": "https://dwarffortresswiki.org/index.php/Optics_engineer",
+                        "organizer": "https://dwarffortresswiki.org/index.php/Organizer",
+                        "pacifier": "https://dwarffortresswiki.org/index.php/Pacifier",
+                        "papermaker": "https://dwarffortresswiki.org/index.php/Papermaker",
+                        "percussionist": "https://dwarffortresswiki.org/index.php/Percussionist",
+                        "persuader": "https://dwarffortresswiki.org/index.php/Persuader",
+                        "pikeman": "https://dwarffortresswiki.org/index.php/Pikeman",
+                        "planter": "https://dwarffortresswiki.org/index.php/Planter",
+                        "poet": "https://dwarffortresswiki.org/index.php/Poet",
+                        "potashmaker": "https://dwarffortresswiki.org/index.php/Potash_maker",
+                        "potter": "https://dwarffortresswiki.org/index.php/Potter",
+                        "presser": "https://dwarffortresswiki.org/index.php/Presser",
+                        "pumpoperator": "https://dwarffortresswiki.org/index.php/Pump_operator",
+                        "reader": "https://dwarffortresswiki.org/index.php/Reader",
+                        "recordkeeper": "https://dwarffortresswiki.org/index.php/Record_keeper",
+                        "rider": "https://dwarffortresswiki.org/index.php/Rider",
+                        "schemer": "https://dwarffortresswiki.org/index.php/Schemer",
+                        "shearer": "https://dwarffortresswiki.org/index.php/Shearer",
+                        "shielduser": "https://dwarffortresswiki.org/index.php/Shield_user",
+                        "siegeengineer": "https://dwarffortresswiki.org/index.php/Siege_engineer",
+                        "siegeoperator": "https://dwarffortresswiki.org/index.php/Siege_operator",
+                        "singer": "https://dwarffortresswiki.org/index.php/Singer",
+                        "soaper": "https://dwarffortresswiki.org/index.php/Soaper",
+                        "speaker": "https://dwarffortresswiki.org/index.php/Speaker",
+                        "spearman": "https://dwarffortresswiki.org/index.php/Spearman",
+                        "spinner": "https://dwarffortresswiki.org/index.php/Spinner",
+                        "stonecrafter": "https://dwarffortresswiki.org/index.php/Stone_crafter",
+                        "strandextractor": "https://dwarffortresswiki.org/index.php/Strand_extractor",
+                        "striker": "https://dwarffortresswiki.org/index.php/Striker",
+                        "stringedinstrumentalist": "https://dwarffortresswiki.org/index.php/Stringed_instrumentalist",
+                        "student": "https://dwarffortresswiki.org/index.php/Student",
+                        "surgeon": "https://dwarffortresswiki.org/index.php/Surgeon",
+                        "suturer": "https://dwarffortresswiki.org/index.php/Suturer",
+                        "swimmer": "https://dwarffortresswiki.org/index.php/Swimmer",
+                        "swordsman": "https://dwarffortresswiki.org/index.php/Swordsman",
+                        "tactician": "https://dwarffortresswiki.org/index.php/Tactician",
+                        "tanner": "https://dwarffortresswiki.org/index.php/Tanner",
+                        "teacher": "https://dwarffortresswiki.org/index.php/Teacher",
+                        "thresher": "https://dwarffortresswiki.org/index.php/Thresher",
+                        "thrower": "https://dwarffortresswiki.org/index.php/Thrower",
+                        "tracker": "https://dwarffortresswiki.org/index.php/Tracker",
+                        "trapper": "https://dwarffortresswiki.org/index.php/Trapper",
+                        "waxworker": "https://dwarffortresswiki.org/index.php/Wax_worker",
+                        "weaponsmith": "https://dwarffortresswiki.org/index.php/Weaponsmith",
+                        "weaver": "https://dwarffortresswiki.org/index.php/Weaver",
+                        "windinstrumentalist": "https://dwarffortresswiki.org/index.php/Wind_instrumentalist",
+                        "woodburner": "https://dwarffortresswiki.org/index.php/Wood_burner",
+                        "woodcrafter": "https://dwarffortresswiki.org/index.php/Wood_crafter",
+                        "woodcutter": "https://dwarffortresswiki.org/index.php/Wood_cutter",
+                        "wordsmith": "https://dwarffortresswiki.org/index.php/Wordsmith",
+                        "wounddresser": "https://dwarffortresswiki.org/index.php/Wound_dresser",
+                        "wrestler": "https://dwarffortresswiki.org/index.php/Wrestler",
+                        "writer": "https://dwarffortresswiki.org/index.php/Writer"};
+                    
       skill2attributes = {"ambusher": {"agility": 5, "focus": 2, "spatialsense": 5, "kinestheticsense": 3},
                           "animalcaretaker": {"agility": 5, "analyticalability": 5, "memory": 3, "empathy": 2},
                           "animaldissector": {"agility": 5, "kinestheticsense": 5},
@@ -447,9 +612,21 @@
                    "grunt": "Grunt", 
                    "archer": "Archer",
                    "hunter": "Hunter",
-                   "entertainer": "Entertainer",
+                   "performer": "Performer",
                    "medic": "Medic"};
       
+      var role2wiki = {"expeditionleader": "https://dwarffortresswiki.org/index.php/Expedition_leader",
+                       "broker": "https://dwarffortresswiki.org/index.php/Broker",
+                       "manager": "https://dwarffortresswiki.org/index.php/Manager",
+                       "militiacaptain": "https://dwarffortresswiki.org/index.php/Militia_captain",
+                       "bookkeeper": "https://dwarffortresswiki.org/index.php/Bookkeeper",
+                       "scholar": "https://dwarffortresswiki.org/index.php/Scholar",
+                       "grunt": "https://dwarffortresswiki.org/index.php/Combat", 
+                       "archer": "https://dwarffortresswiki.org/index.php/Archer",
+                       "hunter": "https://dwarffortresswiki.org/index.php/Hunter",
+                       "performer": "https://dwarffortresswiki.org/index.php/Performer",
+                       "medic": "https://dwarffortresswiki.org/index.php/Health_care"};
+                   
       role2skills = {"expeditionleader": ["leader", "consoler", "pacifier", "comedian", "conversationalist", "flatterer", "liar", "intimidator", "judgeofintent", "negotiator", "persuader"],
                      "broker": ["judgeofintent", "appraiser"],
                      "manager": ["organizer", "consoler", "pacifier"],
@@ -458,7 +635,7 @@
                      "bookkeeper": ["recordkeeper"],
                      "grunt": ["biter", "shielduser", "fighter", "armor user", "wrestler", "dodger", "swordsman", "striker", "spearman", "pikeman", "maceman", "kicker", "hammerman", "discipline", "axeman"],
                      "archer": ["discipline", "thrower", "crossbowman", "blowgunner", "archer", "bowman"],
-                     "entertainer": ["comedian", "windinstrumentalist", "stringedinstrumentalist", "speaker", "singer", "percussionist", "musician", "keyboardist", "dancer"],
+                     "performer": ["comedian", "windinstrumentalist", "stringedinstrumentalist", "speaker", "singer", "percussionist", "musician", "keyboardist", "dancer"],
                      "medic": ["bonedoctor", "wounddresser", "suturer", "surgeon", "diagnostician"],
                      "hunter": ["ambusher", "crossbowman", "blowgunner", "archer", "bowman", "tracker"]}
       
@@ -488,7 +665,10 @@
         var radiotitlerow = document.createElement("tr");
         var radiotitlecell = document.createElement("td");
         radiotitlecell.setAttribute("class", "radiotitle");
-        radiotitlecell.innerHTML = attributes[inattribute];
+        var radiotitleanchor = document.createElement("a");
+        radiotitleanchor.setAttribute("href", attribute2wiki[inattribute]);
+        radiotitleanchor.innerText = attributes[inattribute];
+        radiotitlecell.appendChild(radiotitleanchor);
         radiotitlerow.appendChild(radiotitlecell);
         
         var radiogrouprow = document.createElement("tr");
@@ -577,7 +757,7 @@
         return retdict;
       }
       
-      function printablelist(initems, label, glosses) {
+      function printablelist(initems, label, glosses, wikis) {
         var scoretotal = 0;
         for (cItem = 0; cItem < initems.length; cItem++) {
           scoretotal += initems[cItem]["score"];
@@ -604,7 +784,10 @@
             }
           }
           curitem.setAttribute("class", classname);
-          curitem.innerText = glosses[initems[cItem][label]];
+          curanchor = document.createElement("a");
+          curanchor.setAttribute("href", wikis[initems[cItem][label]]);
+          curanchor.innerText = glosses[initems[cItem][label]];
+          curitem.appendChild(curanchor);
           retlist.appendChild(curitem);
         }
         return retlist;
@@ -623,18 +806,29 @@
         var sortedscoredroles = sort_by_key(scoredroles, "score");
         // display
         var resultstable = document.getElementById("resultstable");
+        resultstable.innerHTML = "";
         var resultsheader = document.createElement("tr");
         resultstable.appendChild(resultsheader);
         
         var goodskillsheader = document.createElement("th");
+        goodskillsanchor = document.createElement("a");
+        goodskillsanchor.setAttribute("href", "https://dwarffortresswiki.org/index.php/Attribute#Skills_by_associated_attributes");
+        goodskillsanchor.innerText = "High Aptitude Skills";
+        goodskillsheader.appendChild(goodskillsanchor);
         resultsheader.append(goodskillsheader);
-        goodskillsheader.innerText = "Skills to Train Up";
         
         var badskillsheader = document.createElement("th");
+        badskillsanchor = document.createElement("a");
+        badskillsanchor.setAttribute("href", "https://dwarffortresswiki.org/index.php/Attribute#Skills_by_associated_attributes");
+        badskillsanchor.innerText = "Low Aptitude Skills";
+        badskillsheader.appendChild(badskillsanchor);
         resultsheader.append(badskillsheader);
-        badskillsheader.innerText = "Skills to Avoid";
         
         var goodrolesheader = document.createElement("th");
+        goodrolesanchor = document.createElement("a");
+        goodrolesanchor.setAttribute("href", "https://dwarffortresswiki.org/index.php/Attribute#Skills_by_associated_attributes");
+        goodrolesanchor.innerText = "High Aptitude Skills";
+        goodrolesheader.appendChild(goodrolesanchor);
         resultsheader.append(goodrolesheader);
         goodrolesheader.innerText = "Potential Roles";
         
@@ -657,7 +851,7 @@
           }
         }
         if (goodskills2print.length > 0) {
-          var printlist = printablelist(goodskills2print, "skill", skills);
+          var printlist = printablelist(goodskills2print, "skill", skills, skill2wiki);
           goodskillcell.appendChild(printlist);
         }
         
@@ -673,7 +867,7 @@
           }
         }
         if (badskills2print.length > 0) {
-          var printlist = printablelist(badskills2print, "skill", skills);
+          var printlist = printablelist(badskills2print, "skill", skills, skill2wiki);
           badskillcell.appendChild(printlist);
         }
         
@@ -689,7 +883,7 @@
           }
         }
         if (goodroles2print.length > 0) {
-          var printlist = printablelist(goodroles2print, "role", roles);
+          var printlist = printablelist(goodroles2print, "role", roles, role2wiki);
           goodrolecell.appendChild(printlist);
         }
         
@@ -705,7 +899,7 @@
           }
         }
         if (badroles2print.length > 0) {
-          var printlist = printablelist(badroles2print, "role", roles);
+          var printlist = printablelist(badroles2print, "role", roles, role2wiki);
           badrolecell.appendChild(printlist);
         }
         
